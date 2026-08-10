@@ -215,9 +215,14 @@
   
   .karte-bild img {
     width: 100%;
-    height: 200px;
+    height: 280px;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  .karte-bild:hover img {
+    transform: scale(1.03);
   }
   
   .karte-bild-inhalt {
@@ -373,6 +378,7 @@
   width: auto;
   object-fit: contain;
 }
+}
 @media (max-width: 768px){
   .page-title-inner{
     flex-direction: row;
@@ -481,3 +487,127 @@
   z-index: 2;
   position: relative;
 }
+/* Einheitliche Kartenhöhe mit Bild */
+.karten-grid{
+  align-items: stretch;
+}
+
+.karte-bild{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.karte-bild-inhalt{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 25px;
+}
+
+.karte-bild-inhalt p{
+  flex: 1;
+}
+
+.karte-bild-inhalt .btn-orange{
+  align-self: flex-start;
+  margin-top: 15px;
+}
+
+.karte-bild img{
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.karte-bild:hover img{
+  transform: scale(1.03);
+}
+/* ============================================
+   LIGHTBOX (Bild vergrößern beim Klick)
+   ============================================ */
+
+   .lightbox-overlay{
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+  }
+  
+  .lightbox-overlay.aktiv{
+    display: flex;
+  }
+  
+  .lightbox-overlay img{
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    object-fit: contain;
+    cursor: default;
+  }
+  
+  .lightbox-schliessen{
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    z-index: 10000;
+    line-height: 1;
+    user-select: none;
+  }
+  
+  .lightbox-schliessen:hover{
+    color: var(--orange);
+  }
+  
+  <!-- ========================
+     LIGHTBOX
+     ======================== -->
+<div class="lightbox-overlay" id="lightbox"
+  onclick="lightboxSchliessen()">
+  <span class="lightbox-schliessen"
+    onclick="lightboxSchliessen()">✕</span>
+  <img id="lightbox-bild" src="" alt="Vergrößertes Bild"
+    onclick="event.stopPropagation()"/>
+</div>
+
+<script>
+  function lightboxOeffnen(src, alt) {
+    document.getElementById('lightbox-bild').src = src;
+    document.getElementById('lightbox-bild').alt = alt;
+    document.getElementById('lightbox').classList.add('aktiv');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function lightboxSchliessen() {
+    document.getElementById('lightbox').classList.remove('aktiv');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') lightboxSchliessen();
+  });
+
+  // Warten bis Seite vollständig geladen ist
+  window.addEventListener('load', function() {
+    document.querySelectorAll('.karte-bild img').forEach(function(img) {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', function() {
+        lightboxOeffnen(this.src, this.alt);
+      });
+    });
+  });
+</script>
+  .karte-bild img{
+    cursor: zoom-in;
+  }

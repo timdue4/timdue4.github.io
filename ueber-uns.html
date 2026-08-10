@@ -130,7 +130,58 @@
             und eine Gemeinschaft, die stärkt.
           </p>
         </div>
+<!-- NEUE KARTE: Schutzkonzept -->
+<div class="karte">
+  <h3>🛡️ Unser Schutzkonzept</h3>
+  <p>
+    Der Schutz und das Wohlbefinden aller Kinder und Jugendlichen
+    hat bei uns höchste Priorität. Seit 1995 leisten wir
+    konzeptionierte Jugendarbeit in der Evangelischen
+    Kirchengemeinde Korschenbroich – mit einem klaren
+    Schutzkonzept, das kontinuierlich weiterentwickelt wird.
+  </p>
+  <p>
+    Hier findest du eine Übersicht unseres Schutzkonzeptes.
+    Die vollständige Version steht dir als PDF zum Download
+    zur Verfügung.
+  </p>
 
+  <!-- LINK ZUR SCHUTZKONZEPT-UNTERSEITE -->
+  <a href="schutzkonzept.html" class="btn-orange"
+    style="margin-bottom: 10px; display: inline-block;">
+    📄 Schutzkonzept lesen
+  </a>
+</div>
+
+<!-- NEUE KARTE: Faires Jugendhaus -->
+<div class="karte">
+  <h3>🌍 Faires Jugendhaus</h3>
+  <p>
+    Beide Jugendzentren tragen die Auszeichnung
+    <strong>„Faires Jugendhaus"</strong> der Evangelischen
+    Jugend im Rheinland. Diese Auszeichnung würdigt unser besonderes Engagement
+    für wirtschaftliche und soziale Gerechtigkeit.
+  </p>
+  <p>
+    Wir bieten Produkte aus zertifiziertem fairem Handel an
+    und führen regelmäßig Projekte und Aktionen durch, die
+    Wirtschaften für das Leben und Gerechtigkeit zum Thema
+    machen. Wir fördern regionale Wirtschaftskreisläufe,
+    achten auf bewusste Ressourcennutzung und haben
+    nachhaltige, ökologische Angebote im Programm.
+  </p>
+  <div style="background-color: #f0f0f0; padding: 12px;
+    border-radius: 6px; font-size: 14px;
+    border-left: 4px solid #FF6600;">
+    🏅 Ausgezeichnet von der
+    <strong>Evangelischen Jugend im Rheinland</strong><br/>
+    Zertifiziert seit: <strong>Dezember 2022</strong>
+    <a href="docs/Auszeichnung.pdf" download
+    class="btn-orange" style="margin-top: 10px;">
+    ⬇️ Auszeichnung als PDF herunterladen
+  </a>
+  </div>
+</div>
       </div>
     </div>
   </section>
@@ -439,6 +490,44 @@
       <a href="kontakt.html">Kontakt & Impressum</a>
     </p>
   </footer>
+
+  <!-- ========================
+     LIGHTBOX
+     ======================== -->
+<div class="lightbox-overlay" id="lightbox"
+onclick="lightboxSchliessen()">
+<span class="lightbox-schliessen"
+  onclick="lightboxSchliessen()">✕</span>
+<img id="lightbox-bild" src="" alt="Vergrößertes Bild"
+  onclick="event.stopPropagation()"/>
+</div>
+
+<script>
+function lightboxOeffnen(src, alt) {
+  document.getElementById('lightbox-bild').src = src;
+  document.getElementById('lightbox-bild').alt = alt;
+  document.getElementById('lightbox').classList.add('aktiv');
+  document.body.style.overflow = 'hidden';
+}
+
+function lightboxSchliessen() {
+  document.getElementById('lightbox').classList.remove('aktiv');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') lightboxSchliessen();
+});
+
+window.addEventListener('load', function() {
+  document.querySelectorAll('.karte-bild img').forEach(function(img) {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function() {
+      lightboxOeffnen(this.src, this.alt);
+    });
+  });
+});
+</script>
 
 </body>
 </html>

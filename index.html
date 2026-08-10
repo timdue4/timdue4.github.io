@@ -117,7 +117,7 @@
 
         <div class="karte-bild">
           <img
-            src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=600"
+            src="Images/Fahrrad_2.jpeg"
             alt="Kurztrips und Aktionen"/>
           <div class="karte-bild-inhalt">
             <h3>🚴 Kurztrips & Aktionen</h3>
@@ -173,6 +173,44 @@
       <a href="kontakt.html#impressum">Impressum</a>
     </p>
   </footer>
+
+  <!-- ========================
+     LIGHTBOX
+     ======================== -->
+<div class="lightbox-overlay" id="lightbox"
+onclick="lightboxSchliessen()">
+<span class="lightbox-schliessen"
+  onclick="lightboxSchliessen()">✕</span>
+<img id="lightbox-bild" src="" alt="Vergrößertes Bild"
+  onclick="event.stopPropagation()"/>
+</div>
+
+<script>
+function lightboxOeffnen(src, alt) {
+  document.getElementById('lightbox-bild').src = src;
+  document.getElementById('lightbox-bild').alt = alt;
+  document.getElementById('lightbox').classList.add('aktiv');
+  document.body.style.overflow = 'hidden';
+}
+
+function lightboxSchliessen() {
+  document.getElementById('lightbox').classList.remove('aktiv');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') lightboxSchliessen();
+});
+
+window.addEventListener('load', function() {
+  document.querySelectorAll('.karte-bild img').forEach(function(img) {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function() {
+      lightboxOeffnen(this.src, this.alt);
+    });
+  });
+});
+</script>
 
 </body>
 </html>
