@@ -20,6 +20,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Startseite</a></li>
       <li><a href="ueber-uns.html">Über uns</a></li>
+      <li><a href="aktuelles.html">Aktuelles</a></li>
       <li><a href="angebote.html">Angebote</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
@@ -133,13 +134,13 @@
 <!-- NEUE KARTE: Schutzkonzept -->
 <div class="karte">
   <h3>🛡️ Unser Schutzkonzept</h3>
-  <p>
-    Der Schutz und das Wohlbefinden aller Kinder und Jugendlichen
-    hat bei uns höchste Priorität. Seit 1995 leisten wir
-    konzeptionierte Jugendarbeit in der Evangelischen
-    Kirchengemeinde Korschenbroich – mit einem klaren
-    Schutzkonzept, das kontinuierlich weiterentwickelt wird.
-  </p>
+ <p>
+      Das Schutzkonzept der Evangelischen Kirchengemeinde
+      Korschenbroich bezieht sich auf das Kirchengesetz der
+      Evangelischen Kirche im Rheinland zum Schutz vor
+      sexualisierter Gewalt. Es versteht sich als fester
+      Bestandteil der Gemeindekonzeption.
+    </p>
   <p>
     Hier findest du eine Übersicht unseres Schutzkonzeptes.
     Die vollständige Version steht dir als PDF zum Download
@@ -263,6 +264,26 @@
 
     </div>
 
+    <!-- BILDERCOLLAGE KLAERWERK -->
+<h3 style="margin-top: 50px; margin-bottom: 15px;
+  font-size: 22px; color: #1A1A1A;">
+  📸 Impressionen Klärwerk
+</h3>
+<div class="collage-grid">
+    <img src="images/Eingang.jpeg"
+    alt="Klärwerk Impression 1" class="collage-bild"/>
+  <img src="images/Gartenhaus.jpeg"
+    alt="Klärwerk Impression 2" class="collage-bild"/>
+  <img src="images/Bar.jpeg"
+    alt="Klärwerk Impression 3" class="collage-bild"/>
+  <img src="images/Billiard.jpeg"
+    alt="Klärwerk Impression 4" class="collage-bild"/>
+  <img src="images/Kicker.jpeg"
+    alt="Klärwerk Impression 5" class="collage-bild"/>
+  <img src="images/Darts.jpeg"
+    alt="Klärwerk Impression 6" class="collage-bild"/>
+</div>
+
     <!-- ÖFFNUNGSZEITEN KLAERWERK -->
     <h3 style="margin-top: 50px; margin-bottom: 15px;
       font-size: 22px; color: #1A1A1A;">
@@ -319,6 +340,8 @@
         Freiheitsstraße 13, 41352 Korschenbroich<br/><br/>
         Tel.: <a href="tel:02161402893"
           style="color: #FF6600;">02161 402893</a><br/>
+        Mobil Tel.: <a href="Mobil Tel.:01621361021"
+          style="color: #FF6600;">0162 1361021</a><br/>
         E-Mail: <a href="mailto:jz-klaerwerk@evkiko.de"
           style="color: #FF6600;">jz-klaerwerk@evkiko.de</a>
       </p>
@@ -404,6 +427,20 @@
 
       </div>
 
+      <!-- BILDERCOLLAGE CHOICE -->
+<h3 style="margin-top: 50px; margin-bottom: 15px;
+  font-size: 22px; color: #1A1A1A;">
+  📸 Impressionen Choice
+</h3>
+<div class="collage-grid">
+  <img src="images/Choice_1.jpg"
+    alt="Choice Impression 1" class="collage-bild"/>
+  <img src="images/Choice_2.jpeg"
+    alt="Choice Impression 2" class="collage-bild"/>
+  <img src="images/Choice_3.jpg"
+    alt="Choice Impression 3" class="collage-bild"/>
+</div>
+
       <!-- ÖFFNUNGSZEITEN CHOICE -->
       <h3 style="margin-top: 50px; margin-bottom: 15px;
         font-size: 22px; color: #1A1A1A;">
@@ -460,6 +497,8 @@
           Eichendorffstraße 24, 41352 Korschenbroich<br/><br/>
           Tel.: <a href="tel:02161671400"
             style="color: #FF6600;">02161 671400</a><br/>
+          Mobil Tel.: <a href="Mobil Tel.:015751344576"
+            style="color: #FF6600;">01575 1344576</a><br/>
           E-Mail: <a href="mailto:jz-choice@evkiko.de"
             style="color: #FF6600;">jz-choice@evkiko.de</a>
         </p>
@@ -520,7 +559,7 @@ document.addEventListener('keydown', function(e) {
 });
 
 window.addEventListener('load', function() {
-  document.querySelectorAll('.karte-bild img').forEach(function(img) {
+  document.querySelectorAll('.karte-bild img, .collage-bild').forEach(function(img) {
     img.style.cursor = 'zoom-in';
     img.addEventListener('click', function() {
       lightboxOeffnen(this.src, this.alt);

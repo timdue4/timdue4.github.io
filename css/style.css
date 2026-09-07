@@ -526,6 +526,8 @@
 .karte-bild:hover img{
   transform: scale(1.03);
 }
+
+
 /* ============================================
    LIGHTBOX (Bild vergrößern beim Klick)
    ============================================ */
@@ -570,44 +572,103 @@
     color: var(--orange);
   }
   
-  <!-- ========================
-     LIGHTBOX
-     ======================== -->
-<div class="lightbox-overlay" id="lightbox"
-  onclick="lightboxSchliessen()">
-  <span class="lightbox-schliessen"
-    onclick="lightboxSchliessen()">✕</span>
-  <img id="lightbox-bild" src="" alt="Vergrößertes Bild"
-    onclick="event.stopPropagation()"/>
-</div>
-
-<script>
-  function lightboxOeffnen(src, alt) {
-    document.getElementById('lightbox-bild').src = src;
-    document.getElementById('lightbox-bild').alt = alt;
-    document.getElementById('lightbox').classList.add('aktiv');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function lightboxSchliessen() {
-    document.getElementById('lightbox').classList.remove('aktiv');
-    document.body.style.overflow = '';
-  }
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') lightboxSchliessen();
-  });
-
-  // Warten bis Seite vollständig geladen ist
-  window.addEventListener('load', function() {
-    document.querySelectorAll('.karte-bild img').forEach(function(img) {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', function() {
-        lightboxOeffnen(this.src, this.alt);
-      });
-    });
-  });
-</script>
   .karte-bild img{
     cursor: zoom-in;
   }
+
+  /* ============================================
+   AKTUELLES / NEWSLETTER
+   ============================================ */
+
+.beitrag-karte{
+  background-color: var(--weiss);
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-left: 5px solid var(--orange);
+  margin-bottom: 20px;
+}
+
+.beitrag-meta{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.beitrag-datum{
+  font-size: 14px;
+  color: #888;
+  font-weight: 500;
+}
+
+.beitrag-kategorie{
+  background-color: var(--orange);
+  color: var(--weiss);
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.beitrag-titel{
+  font-size: 28px;
+  color: var(--schwarz);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.beitrag-text{
+  font-size: 17px;
+  line-height: 1.8;
+  margin-bottom: 15px;
+  color: var(--grau);
+}
+
+.beitrag-bilder{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.beitrag-bild{
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
+}
+
+.beitrag-bild:hover{
+  transform: scale(1.02);
+}
+/* ============================================
+   BILDERCOLLAGE
+   ============================================ */
+
+.collage-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin-top: 15px;
+  margin-bottom: 40px;
+}
+
+.collage-bild{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: zoom-in;
+  transition: transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.collage-bild:hover{
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
